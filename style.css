@@ -1,0 +1,78 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+html, body, .window {
+     background: rgba(25, 25, 25, 0) !important;
+ }
+
+@font-face {
+    font-family: 'Monaco';
+    src: url('monaco.ttf');
+  }
+
+.CodeMirror {
+    font-size: 12pt;
+    font-family: "Monaco";
+}
+
+.flexcontainer {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    width: 100%;
+    height: 100%;
+}
+
+.code-container {
+    flex: 0.8;
+}
+
+.result-container {
+    flex: 0.4;
+}
+
+.result-container textarea {
+    overflow: hidden;   
+}
+
+textarea {
+    height: 100% !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.CodeMirror { height: 100%; }
+
+.cm-s-material .cm-comment { color: #54CA97; }
+
+.code-container .CodeMirror {
+    z-index: 1;
+    box-shadow: 10px 5px 55px #192228 !important;
+}
+
+.result-container .CodeMirror {
+    padding-left: 10px;
+}    
+
+.code-container .cm-s-material.CodeMirror {
+    background-color: rgba(38, 50, 56, 0.9);
+}
+
+.result-container .cm-s-material.CodeMirror {
+    background: rgba(29, 38, 43, 0.9) !important;
+}
+
+.toolbar.toolbar-header {
+    background: #1D262B !important;
+    border: none;
+    box-shadow: none;
+}
+
+.toolbar * {
+    color: #FFF !important;
+    font-family: "Monaco";
+}
