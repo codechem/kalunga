@@ -3,7 +3,10 @@ const ceval = require('./evaluator')
 const inputs = [
     "3 + 4",
     "2 eur to mkd",
-    "(2 eur to mkd) to gbp"
+    "(2 eur to mkd) to gbp",
+    "5 %",
+    "10% of (5 % of 1000)",
+    "5$ to eur"
 ]
 
 const log = (what) => { 
