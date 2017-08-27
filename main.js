@@ -6,7 +6,7 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
-var electronVibrancy = require('./vendor/electron-vibrancy');
+// var electronVibrancy = require('./vendor/electron-vibrancy');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -31,7 +31,7 @@ function createWindow() {
   }))
 
   mainWindow.on('ready-to-show', function () {
-    electronVibrancy.SetVibrancy(mainWindow, 0);
+    // electronVibrancy.SetVibrancy(mainWindow, 2);
 
     // // non-resizing vibrant view at {0,0} with size {300,300} with Material 0
     // electronVibrancy.AddView(mainWindow, { Width: 300, Height: 300, X: 0, Y: 0, ResizeMask: 3, Material: 0 })

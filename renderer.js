@@ -24,6 +24,7 @@ function syncScroll(origin, dest) {
   const scrollNfo = origin.getScrollInfo();
   dest.scrollTo(scrollNfo.left, scrollNfo.top);
 }
+
 // Add the listener
 document.addEventListener('DOMContentLoaded', function () {
   const actionArea = document.getElementById("actionArea");
@@ -60,11 +61,13 @@ document.addEventListener('DOMContentLoaded', function () {
     new Promise((resolve, reject) => {
       try {
         console.log(lineContent);
-        const isJs = lineContent.startsWith("$");
-        if (isJs) {
-          const result = eval(lineContent.substr(1));
+        const isRegular = lineContent.startsWith("#");
+        if (!isRegular) {
+          const result = eval(lineContent);
           console.log(result);
           setLine(resultArea, lineNb, result);
+        } else {
+          setLine(resultArea, lineNb, lineContent);
         }
       } catch (err) {
         console.log(err);
