@@ -3,6 +3,7 @@
 // All of the Node.js APIs are available in this process.
 const $ = require('jquery');
 require('./simplescrollbars')
+const ceval = require('./evaluator')
 
 function refreshCodeMirror(instance) {
   instance.refresh();
@@ -63,7 +64,8 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(lineContent);
         const isRegular = lineContent.startsWith("#");
         if (!isRegular) {
-          const result = eval(lineContent);
+          // const result = eval(lineContent);
+          const result = ceval.evaluate(ceval.parse(lineContent));
           console.log(result);
           setLine(resultArea, lineNb, result);
         } else {
