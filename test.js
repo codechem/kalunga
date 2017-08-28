@@ -18,7 +18,9 @@ var inputs = [
 
 inputs = [
     "(5 % of 100 usd) + 15",
-    "5% of 100"
+    "100 usd  to mkd",
+    "51.64 mkd to usd",
+    "1 eur to mkd"
 ]
 
 const log = (what) => { 
