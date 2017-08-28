@@ -103,6 +103,13 @@ var binops = {
     "*": function (a, b) { return makeResult(a.value * b.value, a.valueType); },
     "/": function (a, b) { return makeResult(a.value / b.value, a.valueType); },
     "%": function (a, b) { return makeResult(a.value % b.value, a.valueType); },
+    "=": function (a, b, env) {
+        console.log("ASSIGN ", a, b);
+        a.assignedValue = b;
+        // env[a.value] = b;
+        jsep.addLiteral(a.value, b);
+        return b;
+    },
     "of": function (a, b, env) {
         // console.log("FLOFFL", a, b);
         var vb = b.value;
@@ -132,14 +139,17 @@ var unops = {
     "+": function (a) { return -a; }
 };
 
-var do_eval = function (node) {
+var do_eval = function (node, env) {
     if (node.type === "BinaryExpression") {
-        return binops[node.operator](do_eval(node.left), do_eval(node.right));
+        return binops[node.operator](do_eval(node.left), do_eval(node.right), env);
     } else if (node.type === "UnaryExpression") {
-        return unops[node.operator](do_eval(node.argument));
-    } else if (node.type === "Literal" || node.type == "ValueType") {
+        return unops[node.operator](do_eval(node.argument), env);
+    } else if (node.type === jsep.types.LITERAL || node.type == jsep.types.VALUE_TYPE
+        || node.type === jsep.types.VARIABLE) {
         return node;
     }
+
+    throw new Error("Can't evaluate ", node);
 };
 
 function parse(str) {
@@ -148,8 +158,9 @@ function parse(str) {
 }
 
 function evaluate(ast, env) {
+    console.log("ast ", ast);
     var result = do_eval(ast, env);
-    console.log(result);
+    console.log("result ", result);
     if (result.valueType) {
         return `${result.value} ${result.valueType.id}`
     }

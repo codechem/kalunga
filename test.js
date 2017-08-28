@@ -17,10 +17,17 @@ var inputs = [
 ]
 
 inputs = [
-    "(5 % of 100 usd) + 15",
-    "100 usd  to mkd",
-    "51.64 mkd to usd",
-    "1 eur to mkd"
+    // "(5 % of 100 usd) + 15",
+    // "100 usd  to mkd",
+    // "51.64 mkd to usd",
+    "10 usd to mkd to eur"
+    // "x = 5 usd",
+    // "x to mkd to eur"
+    // "x = 5",
+    // "x",
+    // "x = 3",
+    // "x",
+    // "x usd to mkd"
 ]
 
 const log = (what) => { 
